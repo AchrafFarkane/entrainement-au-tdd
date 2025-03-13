@@ -44,9 +44,9 @@ class HugeClass
     {
         $this->reportFormat = $format;
 
-        if ($format == "PDF") {
+        if (strtoupper($format) == "PDF") {
             $this->reportContext->setStrategy(new PDFReportStrategy());
-        } else if ($format == "HTML") {
+        } else if (strtoupper($format) == "HTML") {
             $this->reportContext->setStrategy(new HTMLReportStrategy());
         } else {
             throw new \Exception("Unsupported report format: " . $format);
