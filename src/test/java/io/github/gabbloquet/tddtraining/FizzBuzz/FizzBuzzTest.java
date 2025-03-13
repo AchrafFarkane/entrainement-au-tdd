@@ -1,5 +1,6 @@
 package io.github.gabbloquet.tddtraining.FizzBuzz;
 
+import io.github.gabbloquet.tddtraining.ChaimaeJAOUDI.NewFizzBuzz;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FizzBuzzTest {
 
-  private FizzBuzz fizzBuzz;
+  private NewFizzBuzz fizzBuzz;
 
   @BeforeEach
   void setUp() {
-    fizzBuzz = new FizzBuzz();
+    fizzBuzz = new NewFizzBuzz();
   }
 
   @Test
