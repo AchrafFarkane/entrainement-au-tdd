@@ -1,26 +1,22 @@
 package io.github.gabbloquet.tddtraining.FizzBuzz;
 
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+
 public class FizzBuzz {
-  public String convert(int input) {
-    if(input % 15 == 0){
-      return "FizzBuzz";
-    } else if(input % 5 == 0) {
-      return "Buzz";
-    } else if(input % 3 == 0){
-      return "Fizz";
-    }
-    return String.valueOf(input);
+
+  public static String calculate(int number) {
+    String result = "";
+    if (number % 3 == 0) result += "Fizz";
+    if (number % 5 == 0) result += "Buzz";
+    return result.isEmpty() ? String.valueOf(number) : result;
   }
 
-  public String compute(int to) {
-    if(to < 1)
-      throw new NonCompliantNumberException();
-
-    StringBuilder transformedString = new StringBuilder();
-    for(int i = 1; i <= to; i++){
-      transformedString.append(convert(i));
-    }
-
-    return transformedString.toString();
+  public static String compute(int n) {
+    return IntStream.rangeClosed(1, n)
+            .mapToObj(FizzBuzz::calculate)
+            .collect(Collectors.joining(" "));
   }
+
 }
