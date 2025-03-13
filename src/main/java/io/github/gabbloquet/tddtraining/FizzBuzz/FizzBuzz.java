@@ -1,26 +1,31 @@
 package io.github.gabbloquet.tddtraining.FizzBuzz;
 
 public class FizzBuzz {
-  public String convert(int input) {
-    if(input % 15 == 0){
-      return "FizzBuzz";
-    } else if(input % 5 == 0) {
-      return "Buzz";
-    } else if(input % 3 == 0){
-      return "Fizz";
-    }
-    return String.valueOf(input);
+
+  public boolean isMultipleOfThree(int number){
+    return number % 3 == 0;
   }
 
-  public String compute(int to) {
-    if(to < 1)
-      throw new NonCompliantNumberException();
+  public boolean isMultipleOfFive(int number){
+    return number % 5 == 0;
+  }
 
-    StringBuilder transformedString = new StringBuilder();
-    for(int i = 1; i <= to; i++){
-      transformedString.append(convert(i));
+  public String transform(int numberInput){
+    if (isMultipleOfThree(numberInput) && isMultipleOfFive(numberInput)){
+      return "FizzBuzz";
+    } else if(isMultipleOfThree(numberInput)){
+      return "Fizz";
+    } else if(isMultipleOfFive(numberInput)){
+      return "Buzz";
     }
+    return String.valueOf(numberInput);
+  }
 
-    return transformedString.toString();
+  public String compute(int number){
+    StringBuilder result = new StringBuilder();
+    for (int i = 1; i <= number; i++) {
+      result.append(transform(i));
+    }
+    return result.toString();
   }
 }
