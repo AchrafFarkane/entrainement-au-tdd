@@ -34,28 +34,18 @@ class HugeClass
 
         // Initialize the report context
         $this->reportContext = new ReportContext();
-
-        // Set the appropriate strategy based on reportFormat
-        $this->setReportStrategy($reportFormat);
-    }
-
-    // Method to change report strategy
-    public function setReportStrategy($format): void
-    {
-        $this->reportFormat = $format;
-
-        if (strtoupper($format) == "PDF") {
-            $this->reportContext->setStrategy(new PDFReportStrategy());
-        } else if (strtoupper($format) == "HTML") {
-            $this->reportContext->setStrategy(new HTMLReportStrategy());
-        } else {
-            throw new \Exception("Unsupported report format: " . $format);
-        }
     }
 
     // Refactored method using Strategy Pattern
+
+    /**
+     * @throws Exception
+     */
     public function generateReport(): void
     {
+        // Set the appropriate strategy based on reportFormat
+        $this->reportContext->setReportStrategy($this->reportFormat);
+
         $this->reportContext->generateReport();
     }
 
