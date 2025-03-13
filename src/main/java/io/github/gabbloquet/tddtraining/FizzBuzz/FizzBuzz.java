@@ -1,26 +1,28 @@
 package io.github.gabbloquet.tddtraining.FizzBuzz;
 
+import java.util.ArrayList;
+
 public class FizzBuzz {
-  public String convert(int input) {
-    if(input % 15 == 0){
-      return "FizzBuzz";
-    } else if(input % 5 == 0) {
-      return "Buzz";
-    } else if(input % 3 == 0){
-      return "Fizz";
-    }
-    return String.valueOf(input);
+
+  // Default constructor
+  public FizzBuzz() {
+  }
+
+  public String convert(int number) {
+    if (number % 15 == 0) return "FizzBuzz"; // Divisible by 15
+    else if (number % 3 == 0) return "Fizz"; // Divisible by 3
+    else if (number % 5 == 0) return "Buzz"; // Divisible by 5
+    else return String.valueOf(number); // return the number as a string
   }
 
   public String compute(int to) {
-    if(to < 1)
-      throw new NonCompliantNumberException();
+    if (to <= 0) throw new NonCompliantNumberException(); // Validate input
+    ArrayList<String> result = new ArrayList<>();
 
-    StringBuilder transformedString = new StringBuilder();
-    for(int i = 1; i <= to; i++){
-      transformedString.append(convert(i));
+    for (int i = 1; i <= to; i++) {
+      result.add(convert(i)); // Convert each number and add to the list
     }
 
-    return transformedString.toString();
+    return String.join("", result);
   }
 }
