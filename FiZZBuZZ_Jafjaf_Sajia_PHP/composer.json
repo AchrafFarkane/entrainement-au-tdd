@@ -1,0 +1,15 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FizzBuzz\\": "src/FizzBuzz/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\FizzBuzz\\": "test/"
+        }
+    }
+}
